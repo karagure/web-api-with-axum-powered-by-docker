@@ -1,6 +1,10 @@
 services:
   app:
-    build: .
+    build:
+      context: .
+      # Use the optimized, source-free multi-stage image (scratch, ~2 MB, 0 CVE).
+      # Swap to "Dockerfile" to build the single-stage variant instead.
+      dockerfile: Dockerfile.multistage
     image: tp-wik-dps-01
     ports:
       - "${PORT:-3000}:${PORT:-3000}"

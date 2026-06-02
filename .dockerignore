@@ -5,5 +5,5 @@
 /.claude
 .env
 *.md
-Dockerfile
+Dockerfile*
 .dockerignore
