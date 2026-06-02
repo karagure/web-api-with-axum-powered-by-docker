@@ -8,9 +8,5 @@ services:
       PORT: ${PORT:-3000}
       INSTANCE_ID: ${INSTANCE_ID:-}
     restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "curl -fsS http://localhost:${PORT:-3000}/ping || exit 1"]
-      interval: 10s
-      timeout: 3s
-      retries: 3
-      start_period: 5s
+    # No healthcheck: the `scratch` image is empty (no curl/shell to exec).
+    # The app is a static binary; liveness is handled by `restart` above.
